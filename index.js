@@ -11,6 +11,6 @@ const app= http.createServer(function (request, response) {
  
     // 下句是发送响应数据
     response.end('Hello World! 这是简单的web服务器test!\n'+time);
-}).listen(8888);
+}).listen(3000);
 // 终端打印如下信息
-console.log('Server running at http://127.0.0.1:8888/');
+console.log('Server running at http://127.0.0.1:3000/');
