@@ -8,4 +8,9 @@
 <body>
   hello-world!!!
 </body>
+  <script>
+    fetch('http://localhost:3000/api')
+      .then(response => response.text())
+      .then(data => console.log(data));
+  </script>
 </html>
