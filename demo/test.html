@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    demo-test
+  </body>
+  <script>
+    const toOptionalFixed = (num, digits) =>
+      `${Number.parseFloat(num.toFixed(digits))}`;
+
+    console.log(toOptionalFixed(1, 2)); // '1'
+    console.log(toOptionalFixed(1.001, 2)); // '1'
+    console.log(toOptionalFixed(1.5, 2)); // '1.5'
+
+    const round = (n, decimals = 0) =>
+      Number(`${Math.round(`${n}e${decimals}`)}e-${decimals}`);
+    console.log(round(1.005, 2)); // 1.01
+    
+    const ordinalsEnUS = {
+      one: "st",
+      two: "nd",
+      few: "rd",
+      many: "th",
+      zero: "th",
+      other: "th",
+    };
+
+    const toOrdinalSuffix = (
+      num,
+      locale = "en-US",
+      ordinals = ordinalsEnUS
+    ) => {
+      const pluralRules = new Intl.PluralRules(locale, { type: "ordinal" });
+      return `${num}${ordinals[pluralRules.select(num)]}`;
+    };
+
+    console.log(toOrdinalSuffix(1)); // '1st'
+    console.log(toOrdinalSuffix(2)); // '2nd'
+    console.log(toOrdinalSuffix(3)); // '3rd'
+    toOrdinalSuffix(4); // '4th'
+    toOrdinalSuffix(123); // '123rd'
+  </script>
+</html>
